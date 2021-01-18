@@ -1,2 +1,7 @@
 # lookup-bitcoin-addresses
-read address data from txt file, check versus stored bitcoin csv (31m addresses), save to new file with private key if a balance is matched
+This program will read your bitcoin address.txt list and then open your
+CSV files (such as 1.csv, 2.csv etc)
+if there is a match, then the private key, public address and bitcoin balance will 
+be save to a file called freemoney.txt
+
+ 
