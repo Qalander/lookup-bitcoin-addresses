@@ -1,7 +1,13 @@
 # lookup-bitcoin-addresses
-This program will read your bitcoin address.txt list and then open your
-CSV files (such as 1.csv, 2.csv etc)
-if there is a match, then the private key, public address and bitcoin balance will 
-be save to a file called freemoney.txt
 
+Compare my discovered addresses (addr_priv.txt) to the existing bitcoin addresses (test1.csv)
+this file (2List_X_check.py) takes addr_priv and strips out the extra columns
+then it converts test1.csv into a txt file called test1_fixed.txt
+then it compares the two lists of addresses to see if there are any matches,
+if so, then we have successfully found an address for which we have the private address
+address and private key printed to FREE_MONEY.txt (as an append, better to have the result twice than have it lost)
+
+TO RUN:
+
+> python 2List_X_check.py
  
