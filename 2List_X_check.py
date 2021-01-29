@@ -55,11 +55,14 @@ e=common(a,b)
 #convert e(list) into a string:
 WinningString = ''.join(e)
 
+number_of_winners = len(e)
+if number_of_winners > 0: print ("NO OF WINNERS: ",number_of_winners, "\n")
+
 # saving matches to file:
 def save_winners(abc):
     if abc != 0:
         print ("YOU ONLY WENT AND BLOODY FOUND SOME FREE MONEY !! \n \t\t[($)] ")
-        print(WinningString + " \t\t[($)] "+"\n  \t\t     ...these addresses are also saved to the file < FREE_MONEY.txt >")
+        print(WinningString + " \t\t[($)] ")
         print('\a')
         z = open("FREE_MONEY.txt", "at")  # Save the matches to a file so we dont lose them, as an append too.
         z.write(WinningString)
@@ -68,5 +71,22 @@ def save_winners(abc):
         print (" no luck this time ... keep permutating!")
         print("\n")
 
-save_winners(e)
+save_winners(e) # call the above function
+
+### Now we create a file with the private keys copied in, again as an 'append' so we dont risk overwriting previously found keys
+def save_winning_keys():
+    FILE1 = "FREE_MONEY.txt"
+    FILE2 = "addr_priv.txt"
+    OUTPUT = "FREE_MONEY_KEYS.txt"
+
+    with open(FILE1) as inf:
+        match = set(line.strip() for line in inf)
+
+    with open(FILE2) as inf, open(OUTPUT, "a") as outf:
+        for line in inf:
+            if line.split(',', 1)[0] in match:
+                outf.write(line)
+
+if number_of_winners > 0: save_winning_keys() 
+if number_of_winners > 0: print("\n  ...these addresses are also saved to the file < FREE_MONEY.txt > \n\t ...the private keys are saved to < FREE_MONEY_KEYS.txt >\n")
 
